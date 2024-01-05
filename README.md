@@ -1,0 +1,1 @@
+# Sprint2_Tasca1_MYSQL_EstructuraDeDades
