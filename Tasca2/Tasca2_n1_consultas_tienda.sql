@@ -63,7 +63,7 @@ FROM tienda.producto;
 
 -- 11. Llista el codi dels fabricants que tenen productes en la taula producto.
 SELECT
-	codigo,
+	codigo_fabricante,
     nombre
 FROM tienda.producto;
 
@@ -200,7 +200,7 @@ SELECT *
 FROM producto
 INNER JOIN 
 	fabricante ON producto.codigo = fabricante.codigo
-    AND (fabricante.nombre = 'Asus'
+    WHERE (fabricante.nombre = 'Asus'
     OR fabricante.nombre = 'Hewlett-Packard'
     OR fabricante.nombre = 'Seagate');
     
@@ -210,7 +210,7 @@ FROM producto
 INNER JOIN 
 	fabricante
     ON producto.codigo_fabricante = fabricante.codigo
-    AND fabricante.nombre
+    WHERE fabricante.nombre
     IN('Asus', 'Hewlett-Packard', 'Seagate');
     
 -- 30. Retorna un llistat amb el nom i el preu de tots els productes dels fabricants el nom dels quals acabi per la vocal e.
@@ -219,7 +219,7 @@ FROM producto
 INNER JOIN 
 	fabricante 
     ON producto.codigo_fabricante = fabricante.codigo
-    AND fabricante.nombre LIKE '%e';
+    WHERE fabricante.nombre LIKE '%e';
     
 -- 31. Retorna un llistat amb el nom i el preu de tots els productes el nom de fabricant dels quals contingui el caràcter w en el seu nom.
 SELECT 
@@ -230,7 +230,7 @@ FROM producto
 INNER JOIN 
 	fabricante 
     ON producto.codigo_fabricante = fabricante.codigo
-	AND fabricante.nombre LIKE '%w%';
+	WHERE fabricante.nombre LIKE '%w%';
     
 -- 32. Retorna un llistat amb el nom de producte, preu i nom de fabricant, de tots els productes que tinguin un preu major o igual a 180 €. Ordena el resultat, en primer lloc, pel preu (en ordre descendent) i, en segon lloc, pel nom (en ordre ascendent).
 SELECT
@@ -241,7 +241,7 @@ FROM producto
 INNER JOIN 
 	fabricante 
     ON producto.codigo_fabricante = fabricante.codigo
-    AND producto.precio >= 180
+    WHERE producto.precio >= 180
 ORDER BY 
 	producto.precio DESC,
     fabricante.nombre;
